@@ -3,4 +3,6 @@
     <string name="text_user">Usuario</string>
     <string name="text_pass">Contraseña</string>
     <string name="title_activity_usuario_registrado">UsuarioRegistrado</string>
+    <string name="opcEditar">Editar</string>
+    <string name="opcBorrar">Borrar</string>
 </resources>

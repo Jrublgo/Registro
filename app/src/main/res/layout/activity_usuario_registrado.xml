@@ -22,7 +22,7 @@
             <ImageView
                 android:layout_width="126dp"
                 android:layout_height="126dp"
-                android:id="@+id/imageView"
+                android:id="@+id/avatar"
                 android:src="@mipmap/ic_launcher" />
 
             <LinearLayout
@@ -32,11 +32,12 @@
                 android:weightSum="1">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="Bienvenido"
-                    android:id="@+id/textView2" />
+                    android:id="@+id/textView2"
+                    android:textSize="35dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -55,8 +56,45 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/txt_datesesion" />
+                android:id="@+id/txt_datesesion"
+                android:textSize="25dp" />
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="top"
+            android:layout_marginTop="50dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="PANEL DE USUARIO"
+                android:id="@+id/textView3"
+                android:layout_weight="0"
+                android:autoText="false"
+                android:textSize="20dp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="MOSTRAR"
+                android:id="@+id/btn_mostrar" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="AÑADIR"
+                android:id="@+id/btn_anyadir" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ELIMINAR"
+                android:id="@+id/btn_eliminar" />
         </LinearLayout>
 
     </LinearLayout>
