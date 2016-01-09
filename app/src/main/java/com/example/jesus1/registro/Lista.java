@@ -23,7 +23,6 @@ public class Lista extends AppCompatActivity {
     private ListView vista_objetos;
 
     ArrayAdapter<Objeto> adapterListaObjetos;
-
     ArrayList<Objeto> lista_objetos = new ArrayList<Objeto>();
     // Necesario para la clase AdaptadorObjeto
     private AdaptadorObjeto adaptadorObjeto;
@@ -33,14 +32,18 @@ public class Lista extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista);
-
         lista_objetos = CargarLista();
 
 
         vista_objetos = (ListView) findViewById(R.id.vista_objetos);
         // Se asemeja a la construccion de la clase AdaptadorObjeto
-        adapterListaObjetos = new ArrayAdapter<Objeto>(this,R.layout.support_simple_spinner_dropdown_item,lista_objetos);
+
+        adaptadorObjeto = new AdaptadorObjeto(this);
+        vista_objetos.setAdapter(adaptadorObjeto);
+
+        /*adapterListaObjetos = new ArrayAdapter<Objeto>(this,android.R.layout.simple_dropdown_item_1line,lista_objetos);
         vista_objetos.setAdapter(adapterListaObjetos);
+*/
 
         registerForContextMenu(vista_objetos);
 
@@ -63,7 +66,7 @@ public class Lista extends AppCompatActivity {
         aux.add(new Objeto("Admin","yo",3,"Estás suspendido"));
         aux.add(new Objeto("Root", "A mi mismo", "No vale la pena"));
         aux.add(new Objeto("Profesor","Alumno","Tienes un 0"));
-        aux.add(new Objeto("Jrublgo","Prubea",2,"Mensaje de poca importancia"));
+        aux.add(new Objeto("Jrublgo","Prueba",2,"Mensaje de poca importancia"));
         aux.add(new Objeto("Profesor", "Yo", 2, "Hablando conmigo mismo"));
         aux.add(new Objeto("Alumno", "Una persona", 1, "ESTE ES EL TEXTO"));
         return  aux;
@@ -95,7 +98,7 @@ public class Lista extends AppCompatActivity {
                 LayoutInflater inflater = actividad.getLayoutInflater();
 
                 item = inflater.inflate(R.layout.fila_objetos, null);
-                // Lo que se va a inflar
+
 
                 holder = new ViewHolder();
 
