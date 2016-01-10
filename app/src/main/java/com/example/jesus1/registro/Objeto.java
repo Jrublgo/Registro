@@ -1,5 +1,7 @@
 package com.example.jesus1.registro;
 
+import java.util.ArrayList;
+
 /**
  * Created by jesus1 on 09/01/2016.
  */
@@ -9,6 +11,9 @@ public class Objeto {
     private String destinatario;
     private String texto;
     private int nivel_urgencia;
+
+
+
 
     public Objeto(String emisor, String destinatario, String texto) {
         this.emisor = emisor;
@@ -56,7 +61,7 @@ public class Objeto {
         this.nivel_urgencia = nivel_urgencia;
     }
 
-    @Override
+  /*  @Override
     public String toString() {
         return "Objeto{" +
                 "emisor='" + emisor + '\'' +
@@ -64,5 +69,5 @@ public class Objeto {
                 ", texto='" + texto + '\'' +
                 ", nivel_urgencia=" + nivel_urgencia +
                 '}';
-    }
+    }*/
 }

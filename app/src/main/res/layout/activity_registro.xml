@@ -34,6 +34,13 @@
             android:id="@+id/etxt_pass"
             android:hint="@string/text_pass" />
 
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Recordar Usuario"
+            android:id="@+id/cbox_recordarusu"
+            android:checked="false" />
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.jesus1.registro">
 
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -16,7 +18,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".UsuarioRegistrado" />
-        <activity android:name=".Lista"></activity>
+        <activity android:name=".Lista" />
+        <activity android:name=".Contacto" />
+        <activity android:name=".NuevoObjeto"></activity>
     </application>
 
 </manifest>

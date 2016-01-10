@@ -5,4 +5,12 @@
     <string name="title_activity_usuario_registrado">UsuarioRegistrado</string>
     <string name="opcEditar">Editar</string>
     <string name="opcBorrar">Borrar</string>
+    <string name="action_settings">Editar</string>
+    <string name="action_exit">Salir</string>
+    <string name="action_contact">Contacto</string>
+    <string name="action_add">Añadir</string>
+    <string name="title_activity_nuevo_objeto">NuevoObjeto</string>
+    <string name="valor_num">Grado de Urgencia [0-3]</string>
+    <string name="valor_dest">Destinatario</string>
+    <string name="valor_mensaje">Mensaje</string>
 </resources>
