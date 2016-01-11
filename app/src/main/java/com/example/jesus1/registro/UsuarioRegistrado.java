@@ -22,17 +22,10 @@ import java.util.zip.Inflater;
 
 import static android.text.format.DateFormat.getDateFormat;
 
-public class UsuarioRegistrado extends AppCompatActivity implements View.OnClickListener {
-
-
+public class UsuarioRegistrado extends AppCompatActivity {
 
     TextView txt_sesion;
     TextView txt_userR;
-    Button btn_mostrar;
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,27 +36,8 @@ public class UsuarioRegistrado extends AppCompatActivity implements View.OnClick
         txt_userR.setText(getIntent().getStringExtra("user"));
         txt_sesion = (TextView) findViewById(R.id.txt_datesesion);
         txt_sesion.setText("Última sesión: " + getIntent().getStringExtra("dateSesion"));
-        btn_mostrar = (Button) findViewById(R.id.btn_mostrar);
-        btn_mostrar.setOnClickListener(this);
-
-
-
-
-
     }
-    @Override
-    public void onClick(View v) {
 
-        switch (v.getId()) {
-
-            case R.id.btn_mostrar:
-                Intent i = new Intent(UsuarioRegistrado.this,Lista.class);
-                startActivity(i);
-                break;
-
-        }
-
-    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
       getMenuInflater().inflate(R.menu.main, menu);
@@ -74,13 +48,15 @@ public class UsuarioRegistrado extends AppCompatActivity implements View.OnClick
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()) {
 
+            case R.id.action_show:
+                Intent iii = new Intent(UsuarioRegistrado.this,Lista.class);
+                startActivity(iii);
+                return true;
             case R.id.action_add:
-
                 Intent ii = new Intent(UsuarioRegistrado.this,NuevoObjeto.class);
                 ii.putExtra("user", txt_userR.getText().toString());
                 startActivity(ii);
                 return true;
-            case R.id.action_settings: return true;
             case R.id.action_contact:
                 Intent i = new Intent(UsuarioRegistrado.this,Contacto.class);
                 startActivity(i);

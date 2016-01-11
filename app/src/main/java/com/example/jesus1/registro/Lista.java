@@ -2,14 +2,18 @@ package com.example.jesus1.registro;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -28,6 +32,7 @@ public class Lista extends AppCompatActivity implements Serializable {
     ArrayAdapter<Objeto> adapterListaObjetos;
 
     ArrayList<Objeto> lista_objetos = new ArrayList<Objeto>();
+
     // Necesario para la clase AdaptadorObjeto
     private AdaptadorObjeto adaptadorObjeto;
     // Para el inflate. Es una inner class. Extiende de ArrayAdapter
@@ -36,8 +41,6 @@ public class Lista extends AppCompatActivity implements Serializable {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista);
-
-
 
         lista_objetos = CargarLista();
 
@@ -63,13 +66,46 @@ public class Lista extends AppCompatActivity implements Serializable {
         inflater.inflate(R.menu.menu_opciones_lista, menu);
     }
 
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        final AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        switch (item.getItemId()){
+
+            case R.id.opcEditar:
+
+                Objeto o = lista_objetos.get(info.position);
+                Intent i = new Intent(Lista.this,NuevoObjeto.class);
+                i.putExtra("EditarObjeto", o);
+                startActivityForResult(i, 1);
+                break;
+            case R.id.opcBorrar:
+                AlertDialog.Builder alerta = new AlertDialog.Builder(this);
+                alerta.setMessage(getResources().getString(R.string.mgsborrar));
+                // Alt + Enter => Para los errores | Control + Espacio => Ayuda
+                alerta.setPositiveButton(getResources().getString(R.string.ok), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        lista_objetos.remove(info.position);
+                        adaptadorObjeto.notifyDataSetChanged();
+                        Toast.makeText(getApplicationContext(),"Borrado con éxito",Toast.LENGTH_LONG).show();
+                    }
+                });
+                AlertDialog dialogo = alerta.create();
+                dialogo.show();
+                break;
+
+        }
+        return true;
+    }
+
     private ArrayList<Objeto> CargarLista() {
         ArrayList<Objeto> aux = new ArrayList<Objeto>();
         aux.add(new Objeto("Jrublgo","Javier Ruano",3,"Este es el proyecto de Android"));
         aux.add(new Objeto("Prueba","Prueba","ESTE ES EL TEXTO"));
         aux.add(new Objeto("Yo","A mi mismo",2,"Acabar este proyecto"));
         aux.add(new Objeto("Yo","Jrublgo",1,"Mensaje a otro usuario"));
-        aux.add(new Objeto("Yo","Javier Ruano","Quisiera resivar mi examen"));
+        aux.add(new Objeto("Yo","Javier Ruano","Quisiera revisar mi examen"));
         aux.add(new Objeto("Root","Prueba","Me estoy quedando sin ideas"));
         aux.add(new Objeto("Admin","yo",3,"Estás suspendido"));
         aux.add(new Objeto("Root", "A mi mismo", "No vale la pena"));
@@ -84,7 +120,7 @@ public class Lista extends AppCompatActivity implements Serializable {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         Toast.makeText(Lista.this, "Nuevo elemento añadido", Toast.LENGTH_SHORT).show();
         if (requestCode == 1) {
-            lista_objetos.add((Objeto) getIntent().getExtras().getSerializable("NuevoObjeto"));
+            lista_objetos.add((Objeto) data.getSerializableExtra("NuevoObjeto"));
             adaptadorObjeto.notifyDataSetChanged();
         }
     }

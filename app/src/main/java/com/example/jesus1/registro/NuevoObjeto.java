@@ -24,6 +24,8 @@ public class NuevoObjeto extends AppCompatActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.nuevo_objeto);
 
+
+
         txt_useremisor = (TextView) findViewById(R.id.txt_useremisor);
         txt_useremisor.setText(getIntent().getStringExtra("user"));
         etxt_destinatario = (EditText) findViewById(R.id.etxt_destinatario);
@@ -31,6 +33,19 @@ public class NuevoObjeto extends AppCompatActivity implements View.OnClickListen
         etxt_mensaje = (EditText) findViewById(R.id.etxt_mensaje);
         btn_enviar = (Button) findViewById(R.id.btn_enviar);
         btn_enviar.setOnClickListener(this);
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == 1) {
+            Objeto EditarObjeto = (Objeto) data.getSerializableExtra("EditarObjeto");
+            txt_useremisor.setText(EditarObjeto.getEmisor());
+            etxt_destinatario.setText(EditarObjeto.getDestinatario());
+            etxt_nota.setText(EditarObjeto.getNivel_urgencia());
+            etxt_mensaje.setText(EditarObjeto.getTexto());
+        }
 
     }
 
@@ -55,7 +70,7 @@ public class NuevoObjeto extends AppCompatActivity implements View.OnClickListen
                         Objeto nuevo_objeto = new Objeto(txt_useremisor.getText().toString(),
                                 etxt_destinatario.getText().toString(),
                                 etxt_mensaje.getText().toString());
-                                i.putExtra("NuevoObjeto", (Serializable) nuevo_objeto);
+                                i.putExtra("NuevoObjeto", nuevo_objeto);
                                 startActivityForResult(i,1);
                     }
                     else {
@@ -64,7 +79,7 @@ public class NuevoObjeto extends AppCompatActivity implements View.OnClickListen
                                 etxt_destinatario.getText().toString(),
                                 Integer.parseInt(etxt_nota.getText().toString()),
                                 etxt_mensaje.getText().toString());
-                                i.putExtra("NuevoObjeto", (Serializable) nuevo_objeto);
+                                i.putExtra("NuevoObjeto", nuevo_objeto);
                                 startActivityForResult(i,1);
                     }
 

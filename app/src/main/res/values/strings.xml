@@ -13,4 +13,7 @@
     <string name="valor_num">Grado de Urgencia [0-3]</string>
     <string name="valor_dest">Destinatario</string>
     <string name="valor_mensaje">Mensaje</string>
+    <string name="mgsborrar">¿Realmente desea borrarlo?</string>
+    <string name="ok">OK</string>
+    <string name="action_show">Mostrar</string>
 </resources>

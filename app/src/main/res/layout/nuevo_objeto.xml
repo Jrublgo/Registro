@@ -87,10 +87,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/etxt_mensaje"
         android:hint="@string/valor_mensaje"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp"
-        android:layout_marginRight="60dp"
-        android:maxLength="50" />
+        android:maxLength="100"
+        android:textAlignment="center" />
 
     <Button
         android:layout_width="match_parent"
