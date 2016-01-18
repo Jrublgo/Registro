@@ -55,7 +55,7 @@ public class UsuarioRegistrado extends AppCompatActivity {
             case R.id.action_add:
                 Intent ii = new Intent(UsuarioRegistrado.this,NuevoObjeto.class);
                 ii.putExtra("user", txt_userR.getText().toString());
-                startActivity(ii);
+                startActivityForResult(ii,2);
                 return true;
             case R.id.action_contact:
                 Intent i = new Intent(UsuarioRegistrado.this,Contacto.class);
