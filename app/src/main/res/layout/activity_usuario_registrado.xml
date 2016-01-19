@@ -70,5 +70,18 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"></LinearLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MOSTRAR"
+            android:id="@+id/btn_mostrar"
+            android:layout_gravity="center_horizontal" />
+
     </LinearLayout>
 </LinearLayout>

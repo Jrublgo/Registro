@@ -3,17 +3,10 @@
         xmlns:tools="http://schemas.android.com/tools"
         tools:context=".Main">
 
-    <item android:id="@+id/action_show"
-        android:title="@string/action_show"
-        android:orderInCategory="100"
-        />
-
     <item android:id="@+id/action_add"
         android:title="@string/action_add"
         android:orderInCategory="100"
         />
-
-      
     <item android:id="@+id/action_contact"
         android:title="@string/action_contact"
         android:orderInCategory="100"

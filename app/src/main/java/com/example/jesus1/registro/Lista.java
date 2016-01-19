@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -38,6 +39,7 @@ public class Lista extends AppCompatActivity implements Serializable {
     private final int CODE1 = 1;
     private final int CODE2 = 2;
     int post;
+    String usuReg;
 
     // Necesario para la clase AdaptadorObjeto
     private AdaptadorObjeto adaptadorObjeto;
@@ -49,7 +51,8 @@ public class Lista extends AppCompatActivity implements Serializable {
         setContentView(R.layout.activity_lista);
 
         lista_objetos = CargarLista();
-
+        Intent i = getIntent();
+        usuReg = i.getStringExtra("usuReg");
 
         vista_objetos = (ListView) findViewById(R.id.vista_objetos);
         // Se asemeja a la construccion de la clase AdaptadorObjeto
@@ -68,11 +71,38 @@ public class Lista extends AppCompatActivity implements Serializable {
         registerForContextMenu(vista_objetos);
 
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        Intent i;
+
+        switch(item.getItemId()) {
+            case R.id.action_add:
+                i = new Intent(Lista.this,NuevoObjeto.class);
+                i.putExtra("emisor",usuReg);
+                startActivityForResult(i,CODE2);
+                break;
+            case R.id.action_contact:
+                i = new Intent(Lista.this,Contacto.class);
+                startActivity(i);
+                break;
+            case R.id.action_exit:
+                finish();
+                break;
+
+        }
+        return true;
+    }
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_opciones_lista, menu);
+       getMenuInflater().inflate(R.menu.menu_opciones_lista, menu);
     }
 
     @Override
@@ -91,7 +121,6 @@ public class Lista extends AppCompatActivity implements Serializable {
                 i.putExtra("destinatario", o.getDestinatario());
                 i.putExtra("urgencia", String.valueOf(o.getNivel_urgencia()));
                 i.putExtra("nota", o.getTexto());
-
                 //i.putExtra("EditarObjeto", o);
                 post = info.position;
                 startActivityForResult(i, CODE1);
@@ -137,24 +166,24 @@ public class Lista extends AppCompatActivity implements Serializable {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        Toast.makeText(Lista.this, "Nuevo elemento añadido", Toast.LENGTH_SHORT).show();
-        //ista_objetos.add((Objeto) data.getSerializableExtra("NuevoObjeto"));
-        String emisor = data.getStringExtra("emisor");
-        String destinatario = data.getStringExtra("destinatario");
-        int nota = (data.getIntExtra("nota", 0));
-        String mensaje = data.getStringExtra("mensaje");
-        Objeto nO = new Objeto(emisor, destinatario, nota, mensaje);
-
-        if (resultCode == RESULT_OK) {
-
-            if (requestCode == CODE1) {
+        if (resultCode == RESULT_OK && data != null) {
+            String emisor = data.getStringExtra("emisor");
+            String destinatario = data.getStringExtra("destinatario");
+            int nota = (data.getIntExtra("nota", 0));
+            String mensaje = data.getStringExtra("mensaje");
+            Objeto nO = new Objeto(emisor, destinatario, nota, mensaje);
+            if (requestCode == CODE1 ) {
                 lista_objetos.set(post, nO);
             } else if (requestCode == CODE2) {
                 lista_objetos.add(nO);
             }
             adaptadorObjeto.notifyDataSetChanged();
+            Toast.makeText(Lista.this, "Nuevo elemento añadido", Toast.LENGTH_SHORT).show();
+            //ista_objetos.add((Objeto) data.getSerializableExtra("NuevoObjeto"));
         }
+        else if (resultCode == RESULT_CANCELED) {
 
+        }
     }
 
     private class AdaptadorObjeto extends ArrayAdapter {
@@ -174,6 +203,7 @@ public class Lista extends AppCompatActivity implements Serializable {
             ViewHolder holder;
 
             if (item == null) {
+                // OnCreate
                 LayoutInflater inflater = context.getLayoutInflater();
                 item = inflater.inflate(R.layout.fila_objetos, null);
 

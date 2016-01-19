@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import java.io.Serializable;
 
-public class NuevoObjeto extends AppCompatActivity implements View.OnClickListener, Serializable{
+public class NuevoObjeto extends AppCompatActivity implements View.OnClickListener, Serializable {
 
     TextView txt_useremisor;
     EditText etxt_destinatario;
@@ -23,7 +23,6 @@ public class NuevoObjeto extends AppCompatActivity implements View.OnClickListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.nuevo_objeto);
-
         // Este es el intent del main (startActivityForResult())
         Intent intent = getIntent();
 
@@ -46,64 +45,46 @@ public class NuevoObjeto extends AppCompatActivity implements View.OnClickListen
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-       /* if (requestCode == 1) {
-            Objeto EditarObjeto = (Objeto) data.getSerializableExtra("EditarObjeto");
-            txt_useremisor.setText(EditarObjeto.getEmisor());
-            etxt_destinatario.setText(EditarObjeto.getDestinatario());
-            etxt_nota.setText(EditarObjeto.getNivel_urgencia());
-            etxt_mensaje.setText(EditarObjeto.getTexto());
-        }*/
-
-    }
-
-    @Override
     public void onClick(View v) {
-
         switch (v.getId()) {
             case R.id.btn_enviar:
-              /*  if (etxt_destinatario.length() == 0 || Integer.parseInt(etxt_nota.getText()
-                        .toString()) > 3 || etxt_mensaje.length() == 0 ) {
-                    Toast.makeText(NuevoObjeto.this,"Campos Inválidos. Inténtelo de nuevo", Toast.LENGTH_SHORT).show();
-                    etxt_mensaje.setText("");
-                    etxt_destinatario.setText("");
-                    etxt_nota.setText("");
-                }
-                else {
 
+                try {
 
-
-                    if (etxt_nota.length() == 0) {
-                        Objeto nuevo_objeto = new Objeto(txt_useremisor.getText().toString(),
-                                etxt_destinatario.getText().toString(),
-                                etxt_mensaje.getText().toString());
-                                i.putExtra("NuevoObjeto", nuevo_objeto);
-                                startActivityForResult(i,1);
+                    if (etxt_destinatario.length() == 0 || Integer.parseInt(etxt_nota.getText()
+                            .toString()) > 3 || etxt_mensaje.length() == 0) {
+                        Toast.makeText(NuevoObjeto.this, R.string.msgerror, Toast.LENGTH_SHORT).show();
                     }
-                    else {*/
-
-                Intent i = new Intent();
+                }
+                    catch (java.lang.NumberFormatException e) {
+                       // Toast.makeText(NuevoObjeto.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                        etxt_nota.setText("0");
+                    }
+                finally {
+                    // AQUI LO CONVIERTE
+                    Intent i = new Intent();
+                    i.putExtra("emisor", txt_useremisor.getText().toString());
+                    i.putExtra("destinatario", etxt_destinatario.getText().toString());
+                    i.putExtra("nota", Integer.parseInt(etxt_nota.getText().toString()));
+                    i.putExtra("mensaje", etxt_mensaje.getText().toString());
+                    setResult(RESULT_OK, i);
+                    finish();
+                    break;
+                    // FORMA QUE NO FUNCIONA
                         /*Objeto nuevo_objeto = new Objeto(txt_useremisor.getText().toString(),
                                 etxt_destinatario.getText().toString(),
                                 Integer.parseInt(etxt_nota.getText().toString()),
                                 etxt_mensaje.getText().toString());
                                 i.putExtra("NuevoObjeto", nuevo_objeto);*/
-                                //startActivityForResult(i,1);
-
-                           // AQUI LO CONVIERTE
-                           i.putExtra("emisor", txt_useremisor.getText().toString());
-                           i.putExtra("destinatario",etxt_destinatario.getText().toString());
-                          i.putExtra("nota",Integer.parseInt(etxt_nota.getText().toString()));
-                          i.putExtra("mensaje", etxt_mensaje.getText().toString());
-                         setResult(RESULT_OK, i);
-                        finish();
-                        break;
-                   // }
-
- //               }
-
-
+                    //startActivityForResult(i,1);
+                }
         }
     }
-}
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(NuevoObjeto.this, R.string.msgexit, Toast.LENGTH_SHORT).show();
+        setResult(RESULT_CANCELED);
+        super.onBackPressed();
+        }
+    }
+

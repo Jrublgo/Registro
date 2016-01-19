@@ -16,4 +16,6 @@
     <string name="mgsborrar">¿Realmente desea borrarlo?</string>
     <string name="ok">OK</string>
     <string name="action_show">Mostrar</string>
+    <string name="msgerror">Campos Inválidos. Inténtelo de nuevo</string>
+    <string name="msgexit">Regresando...</string>
 </resources>
