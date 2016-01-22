@@ -18,4 +18,5 @@
     <string name="action_show">Mostrar</string>
     <string name="msgerror">Campos Inválidos. Inténtelo de nuevo</string>
     <string name="msgexit">Regresando...</string>
+    <string name="projecto">Lightning App</string>
 </resources>

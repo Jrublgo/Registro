@@ -16,7 +16,7 @@ import java.util.TimerTask;
 public class ActivityBienvenida extends AppCompatActivity {
 
  private static final long SPLASH_SCREEN_DELAY = 3500;
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
