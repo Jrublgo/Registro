@@ -19,4 +19,7 @@
     <string name="msgerror">Campos Inválidos. Inténtelo de nuevo</string>
     <string name="msgexit">Regresando...</string>
     <string name="projecto">Lightning App</string>
+    <string name="action_opedit">Editar perfil</string>
+    <string name="action_see">Correo</string>
+
 </resources>

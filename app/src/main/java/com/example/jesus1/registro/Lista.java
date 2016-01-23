@@ -29,17 +29,12 @@ import java.util.ArrayList;
 public class Lista extends AppCompatActivity implements Serializable {
 
     private ListView vista_objetos;
-
-    //ArrayAdapter<Objeto> adapterListaObjetos;
-
-    ArrayList<Objeto> lista_objetos = new ArrayList<Objeto>();
-
-
-
+    private ArrayList<Objeto> lista_objetos = new ArrayList<Objeto>();
     private final int CODE1 = 1;
     private final int CODE2 = 2;
-    int post;
-    String usuReg;
+    private int post;
+    private String usuReg;
+    private boolean vista_btnmostrar = true;
 
     // Necesario para la clase AdaptadorObjeto
     private AdaptadorObjeto adaptadorObjeto;
@@ -49,25 +44,13 @@ public class Lista extends AppCompatActivity implements Serializable {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista);
-
-        lista_objetos = CargarLista();
         Intent i = getIntent();
-        usuReg = i.getStringExtra("usuReg");
-
+        lista_objetos = (ArrayList<Objeto>) i.getSerializableExtra("lista");
+        usuReg = i.getStringExtra("emisor");
         vista_objetos = (ListView) findViewById(R.id.vista_objetos);
         // Se asemeja a la construccion de la clase AdaptadorObjeto
-
-
-
         adaptadorObjeto = new AdaptadorObjeto(this);
-
-        vista_objetos.setAdapter(adaptadorObjeto);
-
-        // adapterListaObjetos = new ArrayAdapter<Objeto>(this,android.R.layout.simple_dropdown_item_1line,lista_objetos);
-        //vista_objetos.setAdapter(adapterListaObjetos);
-
-
-
+      vista_objetos.setAdapter(adaptadorObjeto);
         registerForContextMenu(vista_objetos);
 
     }
@@ -86,7 +69,7 @@ public class Lista extends AppCompatActivity implements Serializable {
             case R.id.action_add:
                 i = new Intent(Lista.this,NuevoObjeto.class);
                 i.putExtra("emisor",usuReg);
-                startActivityForResult(i,CODE2);
+                startActivityForResult(i, CODE2);
                 break;
             case R.id.action_contact:
                 i = new Intent(Lista.this,Contacto.class);
@@ -95,7 +78,22 @@ public class Lista extends AppCompatActivity implements Serializable {
             case R.id.action_exit:
                 finish();
                 break;
+            case R.id.action_see:
+                if (!vista_btnmostrar) {
 
+                    vista_objetos.setVisibility(View.VISIBLE);
+                    vista_btnmostrar = true;
+
+                }
+                else if (vista_btnmostrar)
+                {
+
+                    vista_objetos.setVisibility(View.INVISIBLE);
+                    vista_btnmostrar = false;
+                }
+                break;
+            case R.id.action_opedit:
+                break;
         }
         return true;
     }
@@ -230,6 +228,14 @@ public class Lista extends AppCompatActivity implements Serializable {
         TextView txt_destinatario;
         TextView txt_grado;
         TextView txt_nota;
+
+    }
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(Lista.this,UsuarioRegistrado.class);
+        i.putExtra("lista",lista_objetos);
+        setResult(RESULT_CANCELED,i);
+        super.onBackPressed();
 
     }
 }

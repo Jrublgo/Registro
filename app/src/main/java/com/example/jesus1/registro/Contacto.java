@@ -24,7 +24,7 @@ public class Contacto extends AppCompatActivity implements View.OnClickListener 
         switch (v.getId()){
             case R.id.btn_llamar:
                 Intent i = new Intent(Intent.ACTION_DIAL);
-                i.setData(Uri.parse("tel:954656012"));
+                i.setData(Uri.parse("tel:+34671330820"));
                 startActivity(i);
 
         }

@@ -7,18 +7,26 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.jesus1.registro.Registro">
+    tools:context="com.example.jesus1.registro.Registro"
+    android:background="@mipmap/screen2">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="412dp">
+        android:layout_height="wrap_content"
+        android:layout_gravity="left|center_vertical|right"
+        android:layout_marginTop="30dp"
+        android:background="#641a8ba2"
+        android:weightSum="1">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Bievenido a la App. Por favor, inicie sesión."
-            android:id="@+id/textView" />
+        <ImageView
+            android:layout_width="94dp"
+            android:layout_height="90dp"
+            android:id="@+id/imageView4"
+            android:src="@mipmap/login2"
+            android:layout_gravity="top|bottom|center"
+            android:layout_marginTop="70dp"
+            android:layout_weight="0.34" />
 
         <EditText
             android:layout_width="match_parent"
@@ -45,6 +53,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Iniciar Sesión"
-            android:id="@+id/btn_sesion" />
+            android:id="@+id/btn_sesion"
+            android:background="#9c7ae7ff" />
     </LinearLayout>
 </LinearLayout>

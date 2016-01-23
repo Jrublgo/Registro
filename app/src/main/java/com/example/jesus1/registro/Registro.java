@@ -19,7 +19,6 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
     private TextView txt_pass;
     private Button btn_iniciar;
     private CheckBox cbox_registrarusu;
-
     private SharedPreferences sp;
 
 
@@ -35,38 +34,40 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
         btn_iniciar.setOnClickListener(this);
 
         cbox_registrarusu = (CheckBox) findViewById(R.id.cbox_recordarusu);
-
+cbox_registrarusu.setChecked(true);
         sp = getSharedPreferences("datos", MODE_PRIVATE);
 
-        if (sp.contains("user") && sp.contains("pass") && cbox_registrarusu.isChecked()) {
-            LanzarActivity();
+        if (sp.contains("userSP") && sp.contains("passSP")) {
+            Intent i = new Intent(Registro.this, UsuarioRegistrado.class);
+            Calendar c = Calendar.getInstance();
+            SimpleDateFormat df = new SimpleDateFormat(); //called without pattern
+            i.putExtra("dateSesion", df.format(c.getTime()).toString());
+            i.putExtra("valor",1);
+            startActivity(i);
             finish();
-
         }
 
 
     }
-
     private void LanzarActivity() {
 
-        Calendar c = Calendar.getInstance();
-        SimpleDateFormat df = new SimpleDateFormat(); //called without pattern
-        // Escribir TOAST y poner crear un nuevo TOAST
+            Intent i = new Intent(Registro.this, UsuarioRegistrado.class);
+            Calendar c = Calendar.getInstance();
+            SimpleDateFormat df = new SimpleDateFormat(); //called without pattern
+            i.putExtra("dateSesion", df.format(c.getTime()).toString());
+            // Escribir TOAST y poner crear un nuevo TOAST
+                i.putExtra("user", txt_user.getText().toString());
+                i.putExtra("pass", txt_pass.getText().toString());
+       if (cbox_registrarusu.isChecked()) {
+           // Solo se ejecutará la primera vez
+           SharedPreferences.Editor editor = sp.edit();
+            editor.putString("userSP", txt_user.getText().toString());
+           editor.putString("passSP", txt_pass.getText().toString());
+           editor.putBoolean("valorRegistro",true);
+           // Valor del CheckBox
+           editor.commit();
+        }
         Toast.makeText(Registro.this, "Registrándose...", Toast.LENGTH_SHORT).show();
-        Intent i = new Intent(Registro.this, UsuarioRegistrado.class);
-        i.putExtra("user", txt_user.getText().toString());
-        i.putExtra("pass", txt_pass.getText().toString());
-        i.putExtra("dateSesion", df.format(c.getTime()).toString());
-        if (!cbox_registrarusu.isChecked()) {
-            txt_pass.setText("");
-            txt_user.setText("");
-        }
-        else {
-            SharedPreferences.Editor editor = sp.edit();
-            editor.putString("user", txt_user.getText().toString());
-            editor.putString("password", txt_pass.getText().toString());
-            editor.commit();
-        }
         startActivity(i);
 
     }

@@ -10,78 +10,92 @@
     tools:context="com.example.jesus1.registro.UsuarioRegistrado"
 
 
-    >
+    android:orientation="vertical"
+    android:background="@mipmap/screen2">
 
 
     <LinearLayout
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="50dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginBottom="20dp">
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="105dp"
+            android:layout_height="105dp"
+            android:id="@+id/avatar"
+            android:src="@mipmap/lightning" />
 
         <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:layout_width="126dp"
-                android:layout_height="126dp"
-                android:id="@+id/avatar"
-                android:src="@mipmap/ic_launcher" />
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:weightSum="1">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Bienvenido"
-                    android:id="@+id/textView2"
-                    android:textSize="35dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:id="@+id/txt_userR" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp">
+            android:background="#641a8ba2">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Bienvenido"
+                android:id="@+id/textView2"
+                android:textSize="30dp"
+                android:autoText="false"
+                android:visibility="visible"
+                android:textColor="#ffffff"
+                android:textAlignment="gravity" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/txt_userR"
+                android:textColor="#f3fee904"
+                android:textAlignment="gravity" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/txt_datesesion"
-                android:textSize="25dp" />
+                android:textSize="25dp"
+                android:textColor="#ffffff" />
 
         </LinearLayout>
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"></LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_panel"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:weightSum="1"
+        android:layout_gravity="right|center_horizontal"
+        android:layout_marginTop="10dp"
+        android:visibility="invisible"
+        android:textAlignment="center">
 
         <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="MOSTRAR"
-            android:id="@+id/btn_mostrar"
-            android:layout_gravity="center_horizontal" />
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Expandir"
+            android:id="@+id/btn_max"
+            android:visibility="visible"
+            android:layout_weight="0.53" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Vaciar"
+            android:id="@+id/btn_vaciar"
+            android:visibility="visible" />
 
     </LinearLayout>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/listView"
+        android:visibility="invisible" />
+
 </LinearLayout>

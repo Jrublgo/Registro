@@ -9,7 +9,7 @@
         android:icon="@mipmap/lightningicon"
         android:label="@string/projecto"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
         <activity android:name=".ActivityBienvenida"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
@@ -17,9 +17,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Registro"
+        <activity
+            android:name=".Registro"
            />
-        <activity android:name=".UsuarioRegistrado" />
+        <activity
+            android:icon="@mipmap/lightningicon"
+            android:name=".UsuarioRegistrado" />
         <activity android:name=".Lista" />
         <activity android:name=".Contacto" />
         <activity android:name=".NuevoObjeto" />

@@ -10,52 +10,73 @@
     tools:context="com.example.jesus1.registro.Contacto"
 
 
-    >
+    android:background="@mipmap/screen">
 
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="80dp">
 
         <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:background="@color/primary_text_disabled_material_light">
 
             <ImageView
                 android:layout_width="126dp"
                 android:layout_height="126dp"
                 android:id="@+id/avatar"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@mipmap/login" />
 
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:weightSum="1">
+                android:weightSum="1"
+                android:baselineAligned="true">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Detalles:"
+                    android:text="AUTOR:"
                     android:id="@+id/textView2"
-                    android:textSize="35dp" />
+                    android:textSize="35dp"
+                    android:textColor="#ffffff" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:id="@+id/txt_autor"
-                    android:text="Autor: Alumno " />
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="E-mail: prueba@gmail.com"
-                    android:id="@+id/txt_email" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:id="@+id/txt_autor"
+                        android:text="Jesús Rubio Hidalgo"
+                        android:textColor="#ffffff" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="E-mail: susej013@gmail.com"
+                        android:id="@+id/txt_email"
+                        android:textColor="#ffffff" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -64,7 +85,7 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="top"
             android:layout_marginTop="50dp"
             android:weightSum="1">
@@ -74,7 +95,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/btn_llamar"
                 android:text="LLAMAR"
-                android:layout_weight="0.21" />
+                android:layout_weight="0.21"
+                android:background="#ff7700" />
 
         </LinearLayout>
 
