@@ -28,21 +28,39 @@ public class UsuarioRegistrado extends AppCompatActivity implements View.OnClick
     TextView txt_userR;
     Button btn_mostrar;
 
+    private final int CODE1 = 1;
+    private final int CODE2 = 2;
+
+    private SharedPreferences sp;
+    int valorCbox;
+    // 1 == True | 0 == False
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_usuario_registrado);
-        Toast.makeText(UsuarioRegistrado.this, "Registro finalizado con éxito", Toast.LENGTH_SHORT).show();
+
         txt_userR = (TextView) findViewById(R.id.txt_userR);
-
-        txt_userR.setText(getIntent().getStringExtra("user"));
         txt_sesion = (TextView) findViewById(R.id.txt_datesesion);
-        txt_sesion.setText("Última sesión: " + getIntent().getStringExtra("dateSesion"));
-
         btn_mostrar = (Button) findViewById(R.id.btn_mostrar);
+
+        Intent i = getIntent();
+        sp = getSharedPreferences("datos", MODE_PRIVATE);
+        valorCbox = i.getIntExtra("valor",0);
+
+        if (valorCbox == 0)
+        {
+            txt_userR.setText(i.getStringExtra("user"));
+        }
+        else if (valorCbox == 1) {
+            txt_userR.setText(sp.getString("userSP",""));
+        }
+
         btn_mostrar.setOnClickListener(this);
-
-
+        txt_sesion.setText("Última sesión: " + i.getStringExtra("dateSesion"));
+        Toast.makeText(UsuarioRegistrado.this, "Registro finalizado con éxito.", Toast.LENGTH_SHORT).show();
+        btn_mostrar.setVisibility(View.INVISIBLE);
+        btn_mostrar.bringToFront();
     }
 
     @Override
@@ -51,8 +69,28 @@ public class UsuarioRegistrado extends AppCompatActivity implements View.OnClick
             case R.id.btn_mostrar:
                 Intent i = new Intent(UsuarioRegistrado.this,Lista.class);
                 i.putExtra("usuReg",txt_userR.getText());
-                startActivity(i);
+                startActivityForResult(i,1);
                 break;
         }
     }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+       /* if (resultCode == RESULT_OK && data != null) {
+            String emisor = data.getStringExtra("emisor");
+            String destinatario = data.getStringExtra("destinatario");
+            int nota = (data.getIntExtra("nota", 0));
+            String mensaje = data.getStringExtra("mensaje");
+            Objeto nO = new Objeto(emisor, destinatario, nota, mensaje);
+            if (requestCode == CODE1 ) {
+                lista_objetos.set(post, nO);
+            } else if (requestCode == CODE2) {
+                lista_objetos.add(nO);
+            }
+            adaptadorObjeto.notifyDataSetChanged();
+            Toast.makeText(Lista.this, "Nuevo elemento añadido", Toast.LENGTH_SHORT).show();
+            //ista_objetos.add((Objeto) data.getSerializableExtra("NuevoObjeto"));
+        }
+        else if (resultCode == RESULT_CANCELED) {
+*/
+        }
 }
