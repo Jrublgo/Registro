@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Lightning Mail</string>
+    <string name="text_user">Usuario</string>
+    <string name="text_pass">Contraseña</string>
+    <string name="title_activity_usuario_registrado">UsuarioRegistrado</string>
+    <string name="opcEditar">Editar</string>
+    <string name="opcBorrar">Remover</string>
+    <string name="action_settings">Opciones</string>
+    <string name="action_exit">Cerrar</string>
+    <string name="action_contact">Contacto</string>
+    <string name="action_add">Enviar nuevo mensaje</string>
+    <string name="title_activity_nuevo_objeto">NuevoObjeto</string>
+    <string name="valor_num">Grado de Urgencia [0-3]</string>
+    <string name="valor_dest">Destinatario</string>
+    <string name="valor_mensaje">Mensaje</string>
+    <string name="mgsborrar">¿Deses realmente borrar este mensaje?</string>
+    <string name="ok">OK</string>
+    <string name="action_show">Mostrar</string>
+    <string name="msgerror">Campos inválidos.Inténtelo de nuevo</string>
+    <string name="msgexit">Regresando</string>
+    <string name="projecto">Lightning App</string>
+    <string name="action_see">Correo</string>
+    <string name="msgadd">Mensaje Añadido!</string>
+    <string name="regis">Registrandose...</string>
+    <string name="llamar">Llamar</string>
+    <string name="remuser">Recordar Usuario</string>
+    <string name="login">Iniciar Sesion</string>
+    <string name="Welcome">Bienvenido</string>
+    <string name="msgend">¡Registro completado!</string>
+    <string name="sesion">Ultima sesion: </string>
+    <string name="Expand">Expandir</string>
+    <string name="Drop">Vaciar</string>
+    <string name="SEND">ENVIAR</string>
+    <string name="writter">Emisor:</string>
+
+</resources>

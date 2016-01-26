@@ -52,7 +52,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Iniciar Sesión"
+            android:text="@string/login"
             android:id="@+id/btn_sesion"
             android:background="#9c7ae7ff" />
     </LinearLayout>

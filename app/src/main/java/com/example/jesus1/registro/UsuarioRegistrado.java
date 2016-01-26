@@ -83,9 +83,9 @@ public class UsuarioRegistrado extends AppCompatActivity implements View.OnClick
         btn_min.setOnClickListener(this);
         btn_max.setOnClickListener(this);
 
-        txt_sesion.setText("Sesión iniciada " + i.getStringExtra("dateSesion"));
+        txt_sesion.setText(R.string.sesion + i.getStringExtra("dateSesion"));
 
-        Toast.makeText(UsuarioRegistrado.this, "Registro finalizado con éxito.", Toast.LENGTH_SHORT).show();
+        Toast.makeText(UsuarioRegistrado.this, R.string.msgend, Toast.LENGTH_SHORT).show();
         //btn_mostrar.bringToFront();*/
         registerForContextMenu(listView);
         ll_panel.setVisibility(View.INVISIBLE);

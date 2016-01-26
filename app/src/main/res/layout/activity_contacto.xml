@@ -39,15 +39,6 @@
                 android:weightSum="1"
                 android:baselineAligned="true">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="AUTOR:"
-                    android:id="@+id/textView2"
-                    android:textSize="35dp"
-                    android:textColor="#ffffff" />
-
                 <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
@@ -68,14 +59,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:text="E-mail: susej013@gmail.com"
-                        android:id="@+id/txt_email"
-                        android:textColor="#ffffff" />
-
                 </LinearLayout>
 
             </LinearLayout>
@@ -93,10 +76,10 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/btn_llamar"
-                android:text="LLAMAR"
+                android:text="@string/llamar"
                 android:layout_weight="0.21"
-                android:background="#ff7700" />
+                android:background="#ff7700"
+                android:id="@+id/btn_llamar" />
 
         </LinearLayout>
 

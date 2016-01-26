@@ -92,8 +92,7 @@ public class Lista extends AppCompatActivity implements Serializable {
                     vista_btnmostrar = false;
                 }
                 break;
-            case R.id.action_opedit:
-                break;
+
         }
         return true;
     }
@@ -144,24 +143,6 @@ public class Lista extends AppCompatActivity implements Serializable {
         }
         return true;
     }
-
-    private ArrayList<Objeto> CargarLista() {
-        ArrayList<Objeto> aux = new ArrayList<Objeto>();
-        aux.add(new Objeto("Jrublgo", "Javier Ruano", 3, "Este es el proyecto de Android"));
-        aux.add(new Objeto("Prueba", "Prueba", "ESTE ES EL TEXTO"));
-        aux.add(new Objeto("Yo", "A mi mismo", 2, "Acabar este proyecto"));
-        aux.add(new Objeto("Yo", "Jrublgo", 1, "Mensaje a otro usuario"));
-        aux.add(new Objeto("Yo", "Javier Ruano", "Quisiera revisar mi examen"));
-        aux.add(new Objeto("Root", "Prueba", "Me estoy quedando sin ideas"));
-        aux.add(new Objeto("Admin", "yo", 3, "Estás suspendido"));
-        aux.add(new Objeto("Root", "A mi mismo", "No vale la pena"));
-        aux.add(new Objeto("Profesor", "Alumno", "Tienes un 0"));
-        aux.add(new Objeto("Jrublgo", "Prueba", 2, "Mensaje de poca importancia"));
-        aux.add(new Objeto("Profesor", "Yo", 2, "Hablando conmigo mismo"));
-        aux.add(new Objeto("Alumno", "Una persona", 1, "ESTE ES EL TEXTO"));
-        return aux;
-    }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK && data != null) {
@@ -176,7 +157,7 @@ public class Lista extends AppCompatActivity implements Serializable {
                 lista_objetos.add(nO);
             }
             adaptadorObjeto.notifyDataSetChanged();
-            Toast.makeText(Lista.this, "Nuevo elemento añadido", Toast.LENGTH_SHORT).show();
+            Toast.makeText(Lista.this, R.string.msgadd, Toast.LENGTH_SHORT).show();
             //ista_objetos.add((Objeto) data.getSerializableExtra("NuevoObjeto"));
         }
         else if (resultCode == RESULT_CANCELED) {

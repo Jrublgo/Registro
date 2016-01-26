@@ -67,7 +67,7 @@ cbox_registrarusu.setChecked(true);
            // Valor del CheckBox
            editor.commit();
         }
-        Toast.makeText(Registro.this, "Registrándose...", Toast.LENGTH_SHORT).show();
+        Toast.makeText(Registro.this, R.string.regis, Toast.LENGTH_SHORT).show();
         startActivity(i);
 
     }
@@ -77,7 +77,7 @@ cbox_registrarusu.setChecked(true);
         switch (v.getId()) {
             case R.id.btn_sesion:
                 if (txt_user.getText().length() == 0 || txt_pass.length() == 0) {
-                    Toast.makeText(Registro.this, "Campos Inválidos. Intentelo de nuevo.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Registro.this, R.string.msgerror, Toast.LENGTH_SHORT).show();
                     break;
                 } else {
                     LanzarActivity();
