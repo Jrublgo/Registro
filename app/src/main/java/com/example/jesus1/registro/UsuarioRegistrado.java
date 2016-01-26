@@ -35,6 +35,7 @@ import static android.text.format.DateFormat.getDateFormat;
 
 public class UsuarioRegistrado extends AppCompatActivity implements View.OnClickListener {
 
+
     private TextView txt_sesion;
     private TextView txt_userR;
     private LinearLayout ll_panel;
@@ -45,6 +46,7 @@ public class UsuarioRegistrado extends AppCompatActivity implements View.OnClick
     private AdaptadorObjeto adaptadorObjeto;
     private final int CODE1 = 1;
     private final int CODE2 = 2;
+    private static final int CODE3 = 3;
     int post;
     String usuReg;
     boolean vista_btnmostrar = false;
@@ -131,8 +133,7 @@ public class UsuarioRegistrado extends AppCompatActivity implements View.OnClick
                     vista_btnmostrar = false;
                 }
                 break;
-            case R.id.action_opedit:
-                break;
+
         }
         return true;
     }
@@ -182,7 +183,7 @@ public class UsuarioRegistrado extends AppCompatActivity implements View.OnClick
         return true;
     }
     @Override
-    public void onBackPressed() {
+    public void onBackPressed(){
         finish();
         super.onBackPressed();
     }
@@ -194,7 +195,7 @@ public class UsuarioRegistrado extends AppCompatActivity implements View.OnClick
                 i = new Intent(UsuarioRegistrado.this,Lista.class);
                 i.putExtra("emisor",txt_userR.getText());
                 i.putExtra("lista", lista_objetos);
-                startActivityForResult(i,3);
+                startActivityForResult(i,CODE3);
                 break;
             case R.id.btn_vaciar:
                 lista_objetos.clear();
@@ -217,6 +218,7 @@ public class UsuarioRegistrado extends AppCompatActivity implements View.OnClick
             Toast.makeText(UsuarioRegistrado.this, "Nuevo elemento añadido", Toast.LENGTH_SHORT).show();
             //ista_objetos.add((Objeto) data.getSerializableExtra("NuevoObjeto"));
         } else if (resultCode == RESULT_CANCELED && data != null) {
+            //lista_objetos.clear();
             lista_objetos = (ArrayList<Objeto>) data.getSerializableExtra("lista");
         }
         adaptadorObjeto.notifyDataSetChanged();
@@ -267,10 +269,10 @@ public class UsuarioRegistrado extends AppCompatActivity implements View.OnClick
                 holder = (ViewHolder) item.getTag();
             }
 
-            holder.txt_emisor.setText("Emisor: " + lista_objetos.get(position).getEmisor());
-            holder.txt_destinatario.setText("Destinatario: " + lista_objetos.get(position).getDestinatario());
-            holder.txt_grado.setText("Nivel: " + String.valueOf(lista_objetos.get(position).getNivel_urgencia()));
-            holder.txt_nota.setText("Nota: " + lista_objetos.get(position).getTexto());
+            holder.txt_emisor.setText(lista_objetos.get(position).getEmisor());
+            holder.txt_destinatario.setText(lista_objetos.get(position).getDestinatario());
+            holder.txt_grado.setText(String.valueOf(lista_objetos.get(position).getNivel_urgencia()));
+            holder.txt_nota.setText(lista_objetos.get(position).getTexto());
             return item;
         }
     }
